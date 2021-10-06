@@ -1,7 +1,10 @@
+const BROKER_HOST = "127.0.0.1";
+const BROKER_PORT = 1337;
+
 const net = require("net");
 
 var client = new net.Socket();
-client.connect(1337, "127.0.0.1", () => {
+client.connect(BROKER_PORT, BROKER_HOST, () => {
   console.log("Creating topics on broker");
   client.write(JSON.stringify({ cmd: "create", topic: "queries" }));
   client.write(JSON.stringify({ cmd: "create", topic: "responses" }));

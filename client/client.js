@@ -1,8 +1,11 @@
+const BROKER_HOST = "127.0.0.1";
+const BROKER_PORT = 1337;
+
 const net = require("net");
 const readline = require("readline");
 
 const client = new net.Socket();
-client.connect(1337, "127.0.0.1", () => {
+client.connect(BROKER_PORT, BROKER_HOST, () => {
   client.write(JSON.stringify({ cmd: "subscribe", topic: "responses" }));
 });
 
